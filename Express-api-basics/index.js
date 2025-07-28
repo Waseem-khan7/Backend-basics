@@ -5,7 +5,7 @@ const users = require("./MOCK_DATA.json");
 const app = express();
 const PORT = 8000;
 
-//Middleware - Plugin
+//Middleware - (BuiltIn)
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
@@ -40,6 +40,7 @@ app.get("/api/users", (req, res) => {
 
 app
   .route("/api/users/:id")
+
   .get((req, res) => {
     const id = Number(req.params.id);
     const user = users.find((user) => user.id === id);
@@ -48,6 +49,7 @@ app
     }
     return res.json(user);
   })
+
   .patch((req, res) => {
     // edit user with id
     const id = Number(req.params.id);
@@ -66,6 +68,7 @@ app
       return res.json({ status: "User Updated", user: users[index] });
     });
   })
+
   .delete((req, res) => {
     // delete user with id
     const id = Number(req.params.id);
