@@ -1,5 +1,13 @@
 [
   {
+    "id": 1,
+    "first_name": "Jed",
+    "last_name": "Dy",
+    "email": "jeddy@upenn.edu",
+    "gender": "male",
+    "job_title": "Nuclear Engineer"
+  },
+  {
     "id": 2,
     "first_name": "Jedidiah",
     "last_name": "Dyka",
@@ -8008,14 +8016,6 @@
     "job_title": "SDE"
   },
   {
-    "id": 1002,
-    "first_name": "KK",
-    "last_name": "M",
-    "email": "KK@gmail.com",
-    "gender": "male",
-    "job_title": "Software E"
-  },
-  {
     "id": 1003,
     "first_name": "KK",
     "last_name": "M",
@@ -8023,9 +8023,8 @@
     "gender": "male",
     "job_title": "Software E"
   },
-  { "id": 1006 },
   {
-    "id": 1007,
+    "id": 1004,
     "first_name": "Rizwan",
     "last_name": "Khan",
     "email": "rizwankhan@gmail.com",

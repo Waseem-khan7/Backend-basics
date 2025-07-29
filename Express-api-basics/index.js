@@ -9,6 +9,7 @@ const PORT = 8000;
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
+// Middleware
 app.use((req, res, next) => {
   fs.appendFile(
     "log.txt",
@@ -41,6 +42,7 @@ app.get("/api/users", (req, res) => {
 app
   .route("/api/users/:id")
 
+  // get the user of unique id
   .get((req, res) => {
     const id = Number(req.params.id);
     const user = users.find((user) => user.id === id);
@@ -50,8 +52,8 @@ app
     return res.json(user);
   })
 
+  // edit user with id
   .patch((req, res) => {
-    // edit user with id
     const id = Number(req.params.id);
     const updates = req.body;
 
@@ -69,8 +71,8 @@ app
     });
   })
 
+  // delete user with id
   .delete((req, res) => {
-    // delete user with id
     const id = Number(req.params.id);
     const updatedData = users.filter((user) => user.id !== id);
     fs.writeFile("./MOCK_DATA.json", JSON.stringify(updatedData), (err) => {
@@ -81,6 +83,7 @@ app
     });
   });
 
+// create a user
 app.post("/api/users", (req, res) => {
   const body = req.body;
   if (
