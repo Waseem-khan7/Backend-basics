@@ -8,7 +8,7 @@ async function handleGenerateNewShortURL(req, res) {
   if (!body.url) return res.status(400).json({ err: "url is required" });
   const shortId = shortID.generate();
   await URL.create({
-    shortId: shortId,
+    shortId,
     redirectURL: body.url,
     visitHistory: [],
   });
@@ -19,13 +19,12 @@ async function handleGenerateNewShortURL(req, res) {
 async function handleGetUrlByID(req, res) {
   const shortId = req.params.shortId;
   const entry = await URL.findOneAndUpdate(
-    {
-      shortId,
-    },
-    {
-      $push: { visitHistory: { timestamp: Date.now() } },
-    }
+    { shortId },
+    { $push: { visitHistory: { timestamp: Date.now() } } }
   );
+  if (!entry) {
+    return res.status(404).json({ error: "Short URL not found" });
+  }
   res.redirect(entry.redirectURL);
 }
 
